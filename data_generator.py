@@ -6,9 +6,9 @@ BOX_SIZE = 10
 NUM_POINTS = 100
 
 def forward_eq_line(source, point):
-    point["x"] = point[0]
-    point["y"] = point[1]
-    point["z"] = point[2]    
+    #point["x"] = point["x"]
+    #point["y"] = point[1]
+    #point["z"] = point[2]    
     a = np.vstack([source["x"], source["y"], source["z"]])
     d = np.vstack([source["dirx"], source["diry"],source["dirz"]])
     p = np.vstack([point["x"],point["y"],point["z"]])
@@ -44,11 +44,11 @@ def line_source_by_summation(source, x, y, z):
 
         dist = np.linalg.norm([sx - x, sy - y, sz - z])
         #intensity += ((source['C'] * source['E'] / dist ** 2) / GRANULARITY)
-        point["x"] = x
-        point["y"] = y
-        point["z"] = z
+        point = {"x":x, "y":y, "z":z}
         
-        intensity += ((forward_eq_line(source, point) / GRANULARITY)
+        intensity += (forward_eq_line(source, point) / GRANULARITY)
+
+
     return intensity
 
 
