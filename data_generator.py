@@ -49,8 +49,6 @@ def line_source_by_summation(source, x, y, z):
         point["z"] = z
         
         intensity += ((forward_eq_line(source, point) / GRANULARITY)
-
-
     return intensity
 
 
