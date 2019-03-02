@@ -20,7 +20,7 @@ def forward_eq_line(source, point):
     L2 = np.linalg.norm(end_point - mid_point)
     M  = np.linalg.norm(end_point - mid_point)
     SL = (3.7*(10**10))/(L1+L2)
-    calc_dose = (SL/(4*np.pi*M))*(np.arctan(L1/M)+np.arctan(L2/M))*(2.2*(10**-6))
+    calc_dose = (SL/(4*np.pi*M))*(np.arctan(L1/M)+np.arctan(L2/M))*(2.2*(10**-6))*180/np.pi
     return calc_dose
 
 
