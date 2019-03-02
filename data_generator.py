@@ -33,20 +33,36 @@ def point_source(source, x, y, z):
     return source['C'] * source['E'] / dist ** 2
 
 
+# def line_source_by_summation(source, x, y, z):
+
+#     intensity = 0
+#     for i in range(1, GRANULARITY + 1):
+#         # print(t)
+#         t = source["len"] / GRANULARITY
+#         [sx, sy, sz] = [p + t * i * q for (p, q) in zip([source["x"], source["y"], source["z"]],
+#                                                         [source["dirx"], source["diry"], source["dirz"]])]
+
+#         dist = np.linalg.norm([sx - x, sy - y, sz - z])
+#         #intensity += ((source['C'] * source['E'] / dist ** 2) / GRANULARITY)
+#         point = {"x":x, "y":y, "z":z}
+        
+#         intensity += (forward_eq_line(source, point) / GRANULARITY)
+
+
+#     return intensity
+
 def line_source_by_summation(source, x, y, z):
 
     intensity = 0
-    for i in range(1, GRANULARITY + 1):
-        # print(t)
-        t = source["len"] / GRANULARITY
-        [sx, sy, sz] = [p + t * i * q for (p, q) in zip([source["x"], source["y"], source["z"]],
+    print(t)
+    t = source["len"] 
+    [sx, sy, sz] = [p + t * q for (p, q) in zip([source["x"], source["y"], source["z"]],
                                                         [source["dirx"], source["diry"], source["dirz"]])]
 
-        dist = np.linalg.norm([sx - x, sy - y, sz - z])
+    #    dist = np.linalg.norm([sx - x, sy - y, sz - z])
         #intensity += ((source['C'] * source['E'] / dist ** 2) / GRANULARITY)
-        point = {"x":x, "y":y, "z":z}
-        
-        intensity += (forward_eq_line(source, point) / GRANULARITY)
+    point = {"x":x, "y":y, "z":z}
+    intensity += (forward_eq_line(source, point))# / GRANULARITY)
 
 
     return intensity
